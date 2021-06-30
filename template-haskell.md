@@ -1,4 +1,5 @@
 Good starting tutorial: https://wiki.haskell.org/A_practical_Template_Haskell_Tutorial .
+
 Also good starting tutorial: https://markkarpov.com/tutorial/th.html .
 
 ## Quick overview
