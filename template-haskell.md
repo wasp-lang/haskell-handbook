@@ -80,7 +80,7 @@ To use "quasi quotes", you need to enable extension `QuasiQuotes`.
 
 First, enable TemplateHaskell extension in GHCI and import `Language.Haskell.TH` module:
 ```
-{-# LANGUAGE TemplateHaskell #-}
+:set -XTemplateHaskell
 :m +Language.Haskell.TH
 ```
 
