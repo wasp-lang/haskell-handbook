@@ -24,7 +24,7 @@ g <$> f == \x -> g (f x) == g . f
 --   x --------> _
 --   |     f
 --   └---> _ --> _
-g <*> f == \x -> g x (f x)  -- Note that here `g` must be a function that takes at least two arguments.
+g <*> f == \x -> g x (f x)
 
 -- Function as a Monad: Same as with applicative, but flipped
 -- order of arguments that get passed to `g`.
@@ -36,4 +36,6 @@ g <*> f == \x -> g x (f x)  -- Note that here `g` must be a function that takes 
 --   x --> _ --> _
 --   └---------> _
 f >>= g = \x -> g (f x) x
+
+-- Note that for Applicative and Monad `g` must be a function that takes at least two arguments, while for Functor it must take at least one argument.
 ```
