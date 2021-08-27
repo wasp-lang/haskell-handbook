@@ -1,7 +1,7 @@
-Wikipedia definition: https://en.wikipedia.org/wiki/Expression_problem
+Wikipedia definition: https://en.wikipedia.org/wiki/Expression_problem  
 TLDR; How do you make your code open to both adding new operations and new types without modifying existing code?
 
-In OOP, by default it is easy to add new types (add new class that implements existing operations) but to add new operation you need to modify the existing classes.
+In OOP, by default it is easy to add new types (add new class that implements existing operations) but to add new operation you need to modify the existing classes.  
 In FP, by default it is easy to add new operation (new new function that pattern matches on existing types) but to add new type you need to modify the existing operations.
 
 Solution for this in OOP is Visitor Pattern.
