@@ -6,7 +6,7 @@ In FP, by default it is easy to add new operation (new new function that pattern
 
 Solution for this in OOP is Visitor Pattern.
 
-In Haskell, there isn't a super simple and elegant solution to this, but in practice you normally don't really need it and it is ok getting by with pattern matching (and type classes if needed).
+In Haskell, there isn't a super simple and elegant solution to this, but in practice you normally don't really need it and it is ok getting by with pattern matching (and type classes if needed). Type system already helps a lot by warning you where changes are needed, avoiding the issue of forgetting to make the change in some place in the code.
 
 There are solutions out there however, from simpler to more complex ones.
 Some materials on the topic:
