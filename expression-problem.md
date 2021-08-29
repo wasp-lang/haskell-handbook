@@ -43,4 +43,127 @@ eval (Sub x y) = eval x - eval y
 ```
 
 So the question is, how can we add another type (`Sub Expr Expr`) without modifying existing code?
- 
+
+## Solutions
+
+I (Martin) read an [online discussion](http://lambda-the-ultimate.org/node/4394#comment-68002) that said:
+
+```
+a widely known Haskell solution to the expression problem, is to lift all constructors to the type level, and use type classes to implement cases where you'd normally use pattern matching. The solution presented in this paper essentially makes this the canonical method of pattern matching, ie. pattern matching is reduced to dictionary dispatch. The connections to OO vtables is obvious I hope.
+```
+
+so I came up with following solution:
+
+```hs
+{-# LANGUAGE GADTs #-}
+
+module ExpressionProblem where
+
+import Data.Typeable (Typeable)
+
+------ Operations ------
+
+class Eval a where
+  eval :: a -> Int
+
+class Render a where
+  render :: a -> String
+
+------ Top lvl data type -------
+
+data Expr where
+  Expr :: (IsExpr e) => e -> Expr
+  deriving (Typeable)
+
+-- NOTE: This breaks the Expression Problem, as we need to add new operations
+-- into list of constraints here!
+class (Typeable e, Eval e, Render e) => IsExpr e
+
+instance Eval Expr where
+  eval (Expr e) = eval e
+
+instance Render Expr where
+  render (Expr e) = render e
+
+------- Data types --------
+
+data Val = Val Int
+  deriving (Typeable)
+
+instance IsExpr Val
+
+instance Eval Val where
+  eval (Val x) = x
+
+instance Render Val where
+  render (Val x) = show x
+
+-----
+
+data Add = Add Expr Expr
+  deriving (Typeable)
+
+instance IsExpr Add
+
+instance Eval Add where
+  eval (Add x y) = eval x + eval y
+
+instance Render Add where
+  render (Add x y) = "(" ++ render x ++ " + " ++ render y ++ ")"
+
+add :: (IsExpr e1, IsExpr e2) => e1 -> e2 -> Add
+add e1 e2 = Add (Expr e1) (Expr e2)
+
+------- Usage ---------
+
+main :: IO ()
+main = do
+  let expr = add (Val 42) (add (Val 314) (Val 217))
+  putStrLn $ render expr
+  putStrLn $ show $ eval expr
+```
+
+However, as you can see above, it didn't work completely. It gets pretty close, but there is still one place where each new operation needs to be added, so Expression Problem isn't solved.
+
+I [asked on reddit](https://www.reddit.com/r/haskell/comments/pcx4cx/solving_expression_problem_for_simple_interpreter/) for help, and community suggested that complete solution in a relatively approachable way can be achieved by "Taggles Final" approach.
+
+### Tagless Final
+
+Article about this approach (solving expression problem is just one application of it): http://okmij.org/ftp/tagless-final/course/lecture.pdf .
+
+Solving our interpreter example with it:
+
+```hs
+class Add e where
+  add :: e -> e -> e
+
+class Val e where
+  val :: Int -> e
+
+newtype Eval = Eval { eval :: Int }
+
+instance Add Eval where
+  add (Eval x) (Eval y) = Eval (x + y)
+
+instance Val Eval where
+  val = Eval
+
+newtype Render = Render { render :: String }
+
+instance Add Render where
+  add (Render x) (Render y) = Render (concat ["(", x, " + ", y, ")"])
+
+instance Val Render where
+  val x = Render (show x)
+
+main :: IO ()
+main = do
+  let 
+    expr :: (Add e, Val e) => e
+    expr = add (val 42) (add (val 314) (val 217))
+  putStrLn $ render expr
+  putStrLn $ show $ eval expr
+```
+
+TODO: Explain if this approach works or not. Explain the logic behind using this approach, how do we translate from original thing to this (it is not very intuitive). But first make sure this also works when you have functions and data which need to have expression part of their signature, I am still figuring this out.
+
