@@ -18,7 +18,7 @@ Some materials on the topic:
 
 We have a simple interpreter:
 ```hs
-data Expr = Val Int | Add Expr Expr
+data Expr = Val Int | Add Expr Exprhttp://www.cs.ru.nl/~W.Swierstra/Publications/DataTypesALaCarte.pdf
 
 eval :: Expr -> Int
 eval (Val x) = x
@@ -125,6 +125,15 @@ main = do
 
 However, as you can see above, it didn't work completely. It gets pretty close, but there is still one place where each new operation needs to be added, so Expression Problem isn't solved.
 
+Similar solution is depicted in [this article](https://core.ac.uk/download/pdf/24067153.pdf), section 2.4, with following caveats:
+```
+Also, values of a given extensible datatype cannot be aggregated or
+stored in a straightforward manner. Furthermore, the definition of
+functions that return values of the extensible datatype cannot adopt
+the aforementioned recipe. 
+```
+which really makes it analogous to my solution above -> if you want to make it more practical by allowing aggregating and storing these data types in a straightforward manner (above I achieve that with `data Expr`), then you need to something like I did and Expression Problem is not completely solved any more.
+
 I [asked on reddit](https://www.reddit.com/r/haskell/comments/pcx4cx/solving_expression_problem_for_simple_interpreter/) for help, and community suggested that complete solution in a relatively approachable way can be achieved by "Taggles Final" approach.
 
 ### Tagless Final
@@ -134,13 +143,20 @@ Article about this approach (solving expression problem is just one application 
 Solving our interpreter example with it:
 
 ```hs
+------ Data types ------
+
 class Add e where
   add :: e -> e -> e
 
 class Val e where
   val :: Int -> e
 
-newtype Eval = Eval { eval :: Int }
+class Mul e where
+  mul :: e -> e -> e
+
+---- Operations -----
+
+newtype Eval = Eval {eval :: Int}
 
 instance Add Eval where
   add (Eval x) (Eval y) = Eval (x + y)
@@ -148,7 +164,12 @@ instance Add Eval where
 instance Val Eval where
   val = Eval
 
-newtype Render = Render { render :: String }
+instance Mul Eval where
+  mul (Eval x) (Eval y) = Eval (x * y)
+
+-----
+
+newtype Render = Render {render :: String}
 
 instance Add Render where
   add (Render x) (Render y) = Render (concat ["(", x, " + ", y, ")"])
@@ -156,14 +177,37 @@ instance Add Render where
 instance Val Render where
   val x = Render (show x)
 
+instance Mul Render where
+  mul (Render x) (Render y) = Render (concat ["(", x, " * ", y, ")"])
+
+---- Usage ----
+
 main :: IO ()
 main = do
-  let 
-    expr :: (Add e, Val e) => e
-    expr = add (val 42) (add (val 314) (val 217))
+  let expr :: (Add e, Val e, Mul e) => e
+      expr = add (val 42) (mul (val 314) (val 217))
   putStrLn $ render expr
   putStrLn $ show $ eval expr
 ```
 
-TODO: Explain if this approach works or not. Explain the logic behind using this approach, how do we translate from original thing to this (it is not very intuitive). But first make sure this also works when you have functions and data which need to have expression part of their signature, I am still figuring this out.
+Good explanation of reasoning behind this can be found in discussion that I lead with reddit user that proposed this as a solution, here: https://www.reddit.com/r/haskell/comments/pcx4cx/solving_expression_problem_for_simple_interpreter/hanstk4?utm_source=share&utm_medium=web2x&context=3 .
 
+Although this approach is not overly complex, I found it hard to intuitively grasp, since operations become data and data becomes operations.
+I haven't yet found a good model to grasp it better intuitively, but as author of the solution said:
+```
+As for intuition, I still just think about it as the mechanical translation from constructors -> type classes and interpretations as instances.
+```
+So, data constructors become type classes, and operations (interpretations) become instances of those.
+
+The tricky part in practice seems to be dealing with type signatures.
+If you add a new piece of structure, e.g. `Mul` next to `Add` and `Val`, you have to update type signatures from `(Add e, Val e)` to `(Add e, Val e, Mul e)`.
+Does this mean that Expression Problem is broken? Really depends on how those type signatures are used. What if we want to have some bigger type, maybe some monad transformer stack, that contains an expression as part of its state -> what would the type signature be there, and if we need to change it when we add new data type / structure, is that causing the Expression Problem? I don't understand this well enough yet, and I haven't created a real world example to test how it behaves.
+
+## Conclusion
+"Tagless Final" approach seems like a good way to completely solve Expression Problem in Haskell, although I am not yet convinced practical is the solution in real world use cases (but I haven't understood / tested it out well enough so that is why).
+
+On the other hand, simpler approach I used above almost solves it (requires updating of just one line when new operation is added), I find it more intuitive, and I am more assured of its practicality in real world use cases, so I would probably pick that one for now if need be.
+
+Finally, there are other ways to solve this problem that I didn't investigate yet (because they seemed more complex), so e.g. it might be worth looking into http://www.cs.ru.nl/~W.Swierstra/Publications/DataTypesALaCarte.pdf .
+
+And important thing to ask ourselves -> is Expression Problem really a problem? It seems to me like it rarely is!
