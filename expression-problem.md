@@ -4,7 +4,7 @@ TLDR; How do you make your code open to both adding new operations and new types
 In OOP, by default it is easy to add new types (add new class that implements existing operations) but to add new operation you need to modify the existing classes.  
 In FP, by default it is easy to add new operation (new new function that pattern matches on existing types) but to add new type you need to modify the existing operations.
 
-Solution for this in OOP is Visitor Pattern.
+In OOP, Visitor Pattern can be used to flip the problem so it is the same as in Haskell.
 
 In Haskell, there isn't a super simple and elegant solution to this, but in practice you normally don't really need it and it is ok getting by with pattern matching (and type classes if needed). Type system already helps a lot by warning you where changes are needed, avoiding the issue of forgetting to make the change in some place in the code.
 
