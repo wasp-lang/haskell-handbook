@@ -13,6 +13,7 @@ Some materials on the topic:
  1. General discussion on Reddit about it: https://www.reddit.com/r/haskell/comments/4gjf7g/is_solving_the_expression_problem_worth_the_bother/
  2. Simple(st) solution to it: http://lambda-the-ultimate.org/node/4394#comment-68002
  3. More complex, famous solution to it: http://www.cs.ru.nl/~W.Swierstra/Publications/DataTypesALaCarte.pdf
+ 4. Nice blog post about expression problem in C++ vs Clojure: https://eli.thegreenplace.net/2016/the-expression-problem-and-its-solutions/
 
 ## Example of Expression Problem in Haskell
 
