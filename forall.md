@@ -180,7 +180,7 @@ Therefore, `read @Int :: String -> Int`.
 
 How does `forall` come into play here?
 
-Well, if an identifier’s type signature does not include an explicit `forall`, the type variable arguments appear in the left-to-right order in which the variables appear in the type. So, `foo :: Monad m => a b -> m (a c)` will have its type variables ordered as `m`, `a`, `b`, `c`, and type applications will happen in that order. However, if you want to force a different order, for example `a`, `b`, `c`, `m`, you can refactor the signature as `foo :: forall a b c m. Monad m => a b -> m (a c)`, and now order of type variables in `forall` will be used when doing type application!
+Well, if an identifier’s type signature does not include an explicit `forall`, the type variable arguments appear in the left-to-right order in which the variables appear in the type. So, `foo :: Monad m => a b -> m (a c)` will have its type variables ordered as `m`, `a`, `b`, `c`, and type applications will happen in that order: if we have `foo @Maybe @Either`, `@Maybe` will apply to `m` while `@Either` will apply to `a`. However, if you want to force a different order, for example `a`, `b`, `c`, `m`, so that `@Maybe` in `foo @Maybe @Either` applies to `a`, you can refactor the signature as `foo :: forall a b c m. Monad m => a b -> m (a c)`, and now order of type variables in `forall` will be used when doing type applications!
 
 This will require you to enable `ExplicitForAll` extension, if it is not already enabled.
 
