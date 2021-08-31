@@ -158,7 +158,7 @@ What is interesting is that in this case, `forall` plays the role of an existent
 
 ### GADTs
 
-Alternative approach is to use the `GADTs` extension, like this:
+Alternative approach to `ExistentialQuantification` is to use the `GADTs` extension, like this:
 ```hs
 {-# LANGUAGE GADTs #-}
 data Showable where
