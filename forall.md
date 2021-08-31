@@ -81,7 +81,7 @@ f xs = ys ++ ys
 
 This code does not compile, because compiler can't match type of `ys` with the return type of `f`.
 Why though, when they are both `[a]`? Well, that is because that is not the same `a`!
-Try changing `ys :: [b]` and you will get the exact same error,
+Try changing `ys :: [a]` to `ys :: [b]` and you will get the exact same error,
 because it is exactly the same code -> `a` in `ys :: [a]` and `a` in `f :: [a] -> [a]` are different `a`s and there is no connection between them.
 `a` in `ys :: [a]` stands for "any type", and not "that type that is reffered to with `a` in the type signature above".
 
