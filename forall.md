@@ -1,18 +1,16 @@
-In Haskell, there is a keyword `forall`.
-
-You might have seen it in advanced code like this:
+You might have seen `forall` being used in Haskell in advanced code like this:
 ```hs
-f :: forall a b. a -> b
-f = ...
-  where g :: b
-        g = ...
+f :: forall a. [a] -> [a]
+f xs = ys ++ ys
+  where ys :: [a]
+        ys = reverse xs
 
 liftPair :: (forall x. x -> f x) -> (a, b) -> (f a, f b)
 
 data Showable = forall s. (Show s) => Showable s
 ```
 
-`forall` is a type quantifier, and it gives extra meaning to polymorphic type signatures (types with letters e.g. `:: a`, `:: a -> b`, `:: a -> Int`, ...).
+`forall` is a type quantifier, and it gives extra meaning to polymorphic type signatures (e.g. `:: a`, `:: a -> b`, `:: a -> Int`, ...).
 
 While normaly `forall` plays a role of the "universal quantifier", it can also play a role of the "existential quantifier" (depends on the situation).
 
