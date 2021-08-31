@@ -117,8 +117,9 @@ bar :: forall a. ((a -> a) -> (Char, Bool))  -- This is usual stuff, we don't ne
 In `foo`, `forall` is applied only to the first argument of `foo`, which is `a -> a`, and not to the rest of the `f`'s type signature. This can be done only with `RankNTypes` extension.
 `bar` on the other hand has `forall` applied to the whole signature, and we didn't even need to write `forall` here since it would be there implicitly anyway.
 
-Now, what does this mean? If we now have `f :: Int -> Int` and `g :: x -> x`, you can pass `g` to `foo` but you can't pass `f` to `foo`, while for the `bar` it is opposite: `bar f` is ok, `bar g` is not.
-This is because we specified, with `forall`, that `foo` needs a polymorphic function as the first argument, while `bar` needs any function that takes one argument of some type and returns that same type.
+Now, what does this mean? If we now have `f :: Int -> Int` and `g :: x -> x`, `foo g` will compile, while `foo f` will not, while for the `bar` it is opposite, `bar f` will compile, while `bar g` will not.
+8
+This is because we specified, with `forall`, that `foo` needs a polymorphic function (function that takes value of **any** type and returns value of that same type) as the first argument, while `bar`, as a first argument, needs a function that takes value of **some** type and returns the value of that same type.
 
 Another example is `mapTuple` function:
 ```hs
