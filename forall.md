@@ -16,7 +16,8 @@ data Showable = forall s. (Show s) => Showable s
 
 While normaly `forall` plays a role of the "universal quantifier", it can also play a role of the "existential quantifier" (depends on the situation).
 
-What does this mean and how can `forall` be used? Below we explain it in relatively simple fashion!
+What does this mean and how can `forall` be used in Haskell? Read on to find out!
+
 NOTE: we assume you are comfortable with basic polymorphism in Haskell.
 
 ## Quick match/logic reminder
