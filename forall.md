@@ -20,7 +20,7 @@ What does this mean and how can `forall` be used in Haskell? Read on to find out
 
 NOTE: we assume you are comfortable with basic polymorphism in Haskell.
 
-## Quick match/logic reminder
+## Quick math/logic reminder
 
 In mathematical logic, we have
 
@@ -37,12 +37,12 @@ In mathematical logic, we have
 
 In Haskell, all polymorphic type signatures are considered to be implicitly prefixed with `forall`.
 
-Therefore, if you see code
+Therefore, if you have
 ```hs
 f :: a -> a
 g :: a -> (a -> b) -> b
 ```
-that is the same as
+it is really the same as
 ```hs
 f :: forall a. a -> a
 g :: forall a b. a -> (a -> b) -> b
