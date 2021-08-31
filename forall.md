@@ -154,7 +154,7 @@ main = printShowables showables
 
 In this example this allowed us to create a heterogeneous list, but only thing we can do with the contents of it is show them.
 
-What is interesting is that in this case, `forall` plays the role of an existential quantifier, unlike the role of universal quantifier it normally plays.
+What is interesting is that in this case, `forall` plays the role of an existential quantifier (therefore the name of extension, `ExistentialQuantification`), unlike the role of universal quantifier it normally plays.
 
 ### GADTs
 
