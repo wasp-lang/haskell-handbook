@@ -111,8 +111,8 @@ This enables some cool things that you were not able to do to before, for exampl
 
 Take a look at this example:
 ```hs
-foo :: (forall a. a -> a) -> (Char,Bool)
-bar :: forall a. ((a -> a) -> (Char, Bool))
+foo :: (forall a. a -> a) -> (Char,Bool)    -- We can do this only with RankNTypes.
+bar :: forall a. ((a -> a) -> (Char, Bool))  -- This is usual stuff, we don't need RankNTypes for it.
 ```
 
 If we now have `f :: Int -> Int` and `g :: x -> x`, you can pass `g` to `foo` but you can't pass it `f`, while for the `bar` it is opposite.
