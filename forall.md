@@ -9,7 +9,7 @@ f = ...
 
 mapPair :: (forall x. x -> f x) -> (a, b) -> (f a, f b)
 
-data Showable = forall s. (Showable s) => Showable s
+data Showable = forall s. (Show s) => Showable s
 ```
 
 `forall` is a type quantifier, and it gives extra meaning to polymorphic type signatures (types with letters e.g. `:: a`, `:: a -> b`, `:: a -> Int`, ...).
@@ -62,6 +62,7 @@ This is not useful on its own though, since as we said above, explicitly writing
 
 However, there are other extensions that make use of `forall` keyword, and these are: `ScopedTypeVariables`, `RankNTypes` and `ExistentialQuantification`.
 All these extensions automatically enable `ExplicitForAll` extension, which means you don't need to enable it yourself when using any of these.
+There is also `TypeApplications` extension which interacts with `forall` and in that case you might want to use `ExplicitForAll` with it.
 
 Since `forall` is useful only when used with at least one of these extensions, let's take a look at how it is used in each one of those!
 
@@ -127,52 +128,51 @@ liftPair :: (forall x. x -> f x) -> (a, b) -> (f a, f b)
 `mapTuple` takes polymorphic function and applies it to both values in the pair.
 There would be no way to write its type signature without using `RankNTypes`.
 
-## `forall` and extension [ExistentialQuantification]()
+## `forall` and extension [ExistentialQuantification](https://ghc.readthedocs.io/en/latest/glasgow_exts.html#existentially-quantified-data-constructors)
 
-TODO
+`ExistentialQuantification` enables us to use `forall` in the type signature of data constructors.
 
+This is useful because it enables us to define heterogeneous data types, which then allows us to store different types in a single data collection (which normally you can't do in Haskell, e.g. you can't have different types in a list).
 
-
-
-
-
-
-
------------------------ TODO --------------------
-
-Great SO question/answers: https://stackoverflow.com/questions/3071136/what-does-the-forall-keyword-in-haskell-ghc-do .
-
-Implicitly, `forall` is there when you have polymorphic function: `f :: a -> b` is same as `f :: forall a b. a -> b`.
-It says that this function works for any `a` or `b`. You can add it to make it explicit, but on its own this doesn't really do anything.
-
-If you use `ScopedTypeVariables` extension, `forall` gets extra role/powers -> it "fixes" the names of the polymorphic variables through the rest of the scope.
-So for example, if we have `f :: forall a. a -> Int` and `f` has a where clause `where g :: a` (which we can do because of ScopedTypeVariables),
-then that `a` will now refer to the same type as `a` in `f :: forall a. a -> Int` refers to.
-Otherwise, if f was defined as `f :: a -> Int`, it would be different: `a` in `where g :: a` would be reffering to some new `a`
-(we could have named it `b` in that case, it wouldn't change anything).
-
-With `RankNTypes` extension, you can nest `forall`s withing function types and data definitions.
-`forall` gets another role: it enables you to pass a polymorphic function as an argument to another function.
-Now you can do smth like `mapTuple :: (forall x. x -> f x) -> (a, b) -> (f a, f b)`.
-The big thing here is, you applied `forall` on just this `x -> f x` function, not on the whole `mapTuple` function, and that changes things.
-It defines the scope of `x`. And now you can call this function on both `a` and `b` and that is ok, otherwise you couldn't.
-So basically, you can use `forall` on parts of the type signature and that gives you more expressivity (e.g. you can describe polymorphic function).
-This is also very nice example:
+For example, if we have
 ```hs
-foo :: (forall a. a -> a) -> (Char,Bool)
-bar :: forall a. ((a -> a) -> (Char, Bool))
+data Showable = forall s. (Show s) => Showable s
 ```
-If we now have `f :: Int -> Int` and `g :: x -> x`, you can pass `g` to `foo` but you can't pass it `f`, while for the `bar` it is opposite.
-`foo` needs a polymoprhic function as the first argument, while `bar` needs any function that takes one argument of some type and returns that same type.
+now we can do
+```hs
+someShowables :: [Showable]
+someShowables = [Showable "Hi", Showable 5, Showable (1, 2)]
 
-With `ExistentialQuantification` extension, `forall` gets even more powers: now you can do `data MyBox = forall a. MyBox a`. So called "hidden types".
-However, now it doesn't play role of the universal quantifier any more -> now it plays the role of the existential quantifier.
-`forall` in `ExistentialQuantification` makes most sense when used with constraints, like `data Showable = forall a. (Show a) => Showable a`.
-Btw. this can now be done via GADTs, and some people say it is nicer -> I should also mention that and compare the two extensions.
+printShowables :: [Showable] -> IO ()
+printShowables ss = mapM_ (\(Showable s) -> print s) ss
 
-There is only really one thing to remember about 'forall': it binds types to some scope.
-Once you understand that, everything is fairly easy. It is the equivalent of 'lambda' (or a form of 'let') on the type level 
+main :: IO ()
+main = printShowables showables
+```
 
-Mention how `forall` can be useful with TypeApplications since it specifies the order of the type variables, which is important when applying types.
+In this example this allowed us to create a heterogeneous list, but only thing we can do with the contents of it is show them.
 
-Further reading: https://dl.acm.org/doi/10.1145/178243.178246 .
+What is interesting is that in this case, `forall` plays the role of an existential quantifier, unlike the role of universal quantifier it normally plays.
+
+
+## `forall` and extension [TypeApplications](https://ghc.readthedocs.io/en/latest/glasgow_exts.html#visible-type-application)
+
+`TypeApplications` does not change how `forall` works like the extensions above do, but it does have an interesting interaction with `forall`, so we will mention it here.
+
+`TypeApplications` allows you to specify values of types variables in a type.
+
+For example, you can do `show (read @Int "5")` to specify that `"5"` should be interpreted as an `Int`.
+
+How does `forall` come into play here?
+
+Well, if an identifier’s type signature does not include an explicit `forall`, the type variable arguments appear in the left-to-right order in which the variables appear in the type. So, `foo :: Monad m => a b -> m (a c)` will have its type variables ordered as `m`, `a`, `b`, `c`, and type applications will happen in that order. However, if you want to force a different order, for example `a`, `b`, `c`, `m`, you can refactor the signature as `foo :: forall a b c m. Monad m => a b -> m (a c)`, and now order of type variables in `forall` will be used!
+
+This will require you to enable `ExplicitForAll` extension, if it is not already enabled.
+
+# Conclusion
+
+This document should give a fair idea of how is `forall` used and what can be done with it.
+
+For more in-detail explanations and further investigation, here is a couple of recommended resources:
+- Great SO question: https://stackoverflow.com/questions/3071136/what-does-the-forall-keyword-in-haskell-ghc-do .
+- Article about `ST` monad that in nice way shows how `forall` is used: https://dl.acm.org/doi/10.1145/178243.178246 . 
