@@ -7,7 +7,7 @@ f = ...
   where g :: b
         g = ...
 
-mapPair :: (forall x. x -> f x) -> (a, b) -> (f a, f b)
+liftPair :: (forall x. x -> f x) -> (a, b) -> (f a, f b)
 
 data Showable = forall s. (Show s) => Showable s
 ```
