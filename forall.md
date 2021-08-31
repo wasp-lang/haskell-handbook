@@ -1,12 +1,16 @@
-You might have seen `forall` being used in Haskell in advanced code like this:
+You might have seen `forall` being used in Haskell like this:
 ```hs
 f :: forall a. [a] -> [a]
 f xs = ys ++ ys
   where ys :: [a]
         ys = reverse xs
-
+```
+or
+```hs
 liftPair :: (forall x. x -> f x) -> (a, b) -> (f a, f b)
-
+```
+or
+```hs
 data Showable = forall s. (Show s) => Showable s
 ```
 
