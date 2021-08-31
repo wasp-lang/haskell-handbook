@@ -166,10 +166,12 @@ What is interesting is that in this case, `forall` plays the role of an existent
 `TypeApplications` allows you to specify values of types variables in a type.
 
 For example, you can do `show (read @Int "5")` to specify that `"5"` should be interpreted as an `Int`.
+`read` has type signature `:: Read a => String -> a`, so what `@Int` does is say that that `a` in the type signature is `Int`.
+Therefore, `read @Int :: String -> Int`.
 
 How does `forall` come into play here?
 
-Well, if an identifier’s type signature does not include an explicit `forall`, the type variable arguments appear in the left-to-right order in which the variables appear in the type. So, `foo :: Monad m => a b -> m (a c)` will have its type variables ordered as `m`, `a`, `b`, `c`, and type applications will happen in that order. However, if you want to force a different order, for example `a`, `b`, `c`, `m`, you can refactor the signature as `foo :: forall a b c m. Monad m => a b -> m (a c)`, and now order of type variables in `forall` will be used!
+Well, if an identifier’s type signature does not include an explicit `forall`, the type variable arguments appear in the left-to-right order in which the variables appear in the type. So, `foo :: Monad m => a b -> m (a c)` will have its type variables ordered as `m`, `a`, `b`, `c`, and type applications will happen in that order. However, if you want to force a different order, for example `a`, `b`, `c`, `m`, you can refactor the signature as `foo :: forall a b c m. Monad m => a b -> m (a c)`, and now order of type variables in `forall` will be used when doing type application!
 
 This will require you to enable `ExplicitForAll` extension, if it is not already enabled.
 
@@ -177,6 +179,6 @@ This will require you to enable `ExplicitForAll` extension, if it is not already
 
 This document should give a fair idea of how is `forall` used and what can be done with it.
 
-For more in-detail explanations and further investigation, here is a couple of recommended resources:
-- Great SO question: https://stackoverflow.com/questions/3071136/what-does-the-forall-keyword-in-haskell-ghc-do .
-- Article about `ST` monad that in nice way shows how `forall` is used: https://dl.acm.org/doi/10.1145/178243.178246 . 
+For more in-detail explanations and further investigation, here is a couple of useful resources:
+- Great SO question/answers: https://stackoverflow.com/questions/3071136/what-does-the-forall-keyword-in-haskell-ghc-do .
+- Article about `ST` monad that also explains a lot about `forall`: https://dl.acm.org/doi/10.1145/178243.178246 . 
