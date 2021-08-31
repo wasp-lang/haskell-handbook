@@ -14,11 +14,11 @@ or
 data Showable = forall s. (Show s) => Showable s
 ```
 
-`forall` is a type quantifier, and it gives extra meaning to polymorphic type signatures (e.g. `:: a`, `:: a -> b`, `:: a -> Int`, ...).
+`forall` is something called "type quantifier", and it gives extra meaning to polymorphic type signatures (e.g. `:: a`, `:: a -> b`, `:: a -> Int`, ...).
 
 While normaly `forall` plays a role of the "universal quantifier", it can also play a role of the "existential quantifier" (depends on the situation).
 
-What does this mean and how can `forall` be used in Haskell? Read on to find out!
+What does all this mean and how can `forall` be used in Haskell? Read on to find out!
 
 NOTE: we assume you are comfortable with basic polymorphism in Haskell.
 
