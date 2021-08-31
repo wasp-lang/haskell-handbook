@@ -112,7 +112,7 @@ This enables some cool things that you were not able to do to before, for exampl
 Take a look at this example:
 ```hs
 foo :: (forall a. a -> a) -> (Char,Bool)    -- We can do this only with RankNTypes.
-bar :: forall a. ((a -> a) -> (Char, Bool))  -- This is usual stuff, we don't need RankNTypes for it.
+bar :: forall a. ((a -> a) -> (Char, Bool))  -- This is usual stuff, we don't need RankNTypes for it. Actually we can even drop `forall` since it is implicit.
 ```
 In `foo`, `forall` is applied only to the first argument of `foo`, which is `a -> a`, and not to the rest of the `f`'s type signature. This can be done only with `RankNTypes` extension.
 `bar` on the other hand has `forall` applied to the whole signature, and we didn't even need to write `forall` here since it would be there implicitly anyway.
