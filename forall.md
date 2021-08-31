@@ -158,6 +158,17 @@ In this example this allowed us to create a heterogeneous list, but only thing w
 
 What is interesting is that in this case, `forall` plays the role of an existential quantifier, unlike the role of universal quantifier it normally plays.
 
+### GADTs
+
+Alternative approach is to use the `GADTs` extension, like this:
+```hs
+{-# LANGUAGE GADTs #-}
+data Showable where
+  Showable :: (Show s) => s -> Showable
+```
+
+In this case `forall` is not needed, as it is implicit.
+
 
 ## `forall` and extension [TypeApplications](https://ghc.readthedocs.io/en/latest/glasgow_exts.html#visible-type-application)
 
