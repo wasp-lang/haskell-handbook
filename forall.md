@@ -59,11 +59,11 @@ So what is the purpose of `forall` then? Well, obviously to be used with extensi
 The simplest extension is `ExplicitForAll`, which allows you to explicitly write `forall` (as we did above).
 This is not useful on its own though, since as we said above, explicitly writing `forall` doesn't change anything, it was already implicitly there.
 
-However, there are other extensions that make use of `forall` keyword, and these are: `ScopedTypeVariables`, `RankNTypes` and `ExistentialQuantification`.
+However, there are other extensions that make use of `forall` keyword, like: `ScopedTypeVariables`, `RankNTypes`, `ExistentialQuantification`.
 All these extensions automatically enable `ExplicitForAll` extension, which means you don't need to enable it yourself when using any of these.
 There is also `TypeApplications` extension which interacts with `forall` and in that case you might want to use `ExplicitForAll` with it.
 
-Since `forall` is useful only when used with at least one of these extensions, let's take a look at how it is used in each one of those!
+Since `forall` is useful only when used with extensions, let's take a look at how it is used in each one of those!
 
 ## `forall` and extension [ScopedTypeVariables](https://ghc.readthedocs.io/en/latest/glasgow_exts.html#lexically-scoped-type-variables)
 
@@ -186,8 +186,10 @@ This will require you to enable `ExplicitForAll` extension, if it is not already
 
 # Conclusion
 
-This document should give a fair idea of how is `forall` used and what can be done with it.
+This document should give a fair idea of how is `forall` used and what can be done with it, but it doesn't go into much depth or cover all of the ways `forall` is used in Haskell.
 
 For more in-detail explanations and further investigation, here is a couple of useful resources:
 - Great SO question/answers: https://stackoverflow.com/questions/3071136/what-does-the-forall-keyword-in-haskell-ghc-do .
+- Docs on extensions, which in details describe how each of them works: https://ghc.readthedocs.io/en/latest/glasgow_exts.html .
+- https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/explicit_forall.html .
 - Article about `ST` monad that also explains a lot about `forall`: https://dl.acm.org/doi/10.1145/178243.178246 . 
