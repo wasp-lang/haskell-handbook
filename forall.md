@@ -154,7 +154,7 @@ printShowables :: [Showable] -> IO ()
 printShowables ss = mapM_ (\(Showable s) -> print s) ss
 
 main :: IO ()
-main = printShowables showables
+main = printShowables someShowables
 ```
 
 In this example this allowed us to create a heterogeneous list, but only thing we can do with the contents of it is show them.
@@ -191,7 +191,7 @@ This will require you to enable `ExplicitForAll` extension, if it is not already
 
 # Conclusion
 
-This document should give a fair idea of how is `forall` used and what can be done with it, but it doesn't go into much depth or cover all of the ways `forall` is used in Haskell.
+This document should give a fair idea of how `forall` is used and what can be done with it, but it doesn't go into much depth or cover all of the ways `forall` is used in Haskell.
 
 For more in-detail explanations and further investigation, here is a couple of useful resources:
 - Great SO question/answers: https://stackoverflow.com/questions/3071136/what-does-the-forall-keyword-in-haskell-ghc-do .
