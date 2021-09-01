@@ -123,7 +123,7 @@ Now, what does this mean? If we now have `f :: Int -> Int` and `g :: x -> x`, `f
 8
 This is because we specified, with `forall`, that `foo` needs a polymorphic function (function that takes value of **any** type and returns value of that same type) as the first argument, while `bar`, as a first argument, needs a function that takes value of **some** type and returns the value of that same type.
 
-Another example is `mapTuple` function:
+Another example is `liftPair` function:
 ```hs
 liftPair :: (forall x. x -> f x) -> (a, b) -> (f a, f b)
 ```
@@ -131,7 +131,7 @@ liftPair :: (forall x. x -> f x) -> (a, b) -> (f a, f b)
 >> liftPair (:[]) (1, "a")
 ([1], ["a"])
 ```
-`mapTuple` takes polymorphic function and applies it to both values in the pair.
+`liftPair` takes polymorphic function and applies it to both values in the pair.
 There would be no way to write its type signature without using `RankNTypes`.
 
 ## `forall` and extension [ExistentialQuantification](https://ghc.readthedocs.io/en/latest/glasgow_exts.html#existentially-quantified-data-constructors)
