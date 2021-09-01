@@ -198,3 +198,5 @@ For more in-detail explanations and further investigation, here is a couple of u
 - Docs on extensions, which in details describe how each of them works: https://ghc.readthedocs.io/en/latest/glasgow_exts.html .
 - https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/explicit_forall.html .
 - Article about `ST` monad that also explains a lot about `forall`: https://dl.acm.org/doi/10.1145/178243.178246 . 
+
+We also captured this document as a blog post at https://wasp-lang.dev/blog/2021/09/01/haskell-forall-tutorial .
