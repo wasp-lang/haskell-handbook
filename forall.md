@@ -73,7 +73,7 @@ Since `forall` is useful only when used with extensions, let's take a look at ho
 
 `ScopedTypeVariables` enables lexical scoping of type variables by explicitly introducing them with `forall`.
 
-Let's take a look at following example:
+Let's take a look at the following example:
 ```hs
 f :: [a] -> [a]
 f xs = ys ++ ys
@@ -105,26 +105,28 @@ which is exactly what we needed, and the code example above now compiles.
 
 ## `forall` and extension [RankNTypes](https://ghc.readthedocs.io/en/latest/glasgow_exts.html#arbitrary-rank-polymorphism)
 
-I don't feel I understand `RankNTypes` well enough to provide a perfect explanation of it, but I will try below to describe practical side of it bluntly.
-
 Basically, what `RankNTypes` does is enable you to use `forall` nested in type signatures, so that it does not apply to the whole type signature but just the part of it.
 
 This enables some cool things that you were not able to do to before, for example you can specify that your function takes a polymorphic function as an argument.
 
 Take a look at this example:
 ```hs
-foo :: (forall a. a -> a) -> (Char,Bool)    -- We can do this only with RankNTypes.
+foo :: (forall a. a -> a) -> (Char, Bool)    -- We can do this only with RankNTypes.
+
 bar :: forall a. ((a -> a) -> (Char, Bool))  -- This is usual stuff, we don't need RankNTypes for it. Actually we can even drop `forall` since it is implicit.
 ```
 In `foo`, `forall` is applied only to the first argument of `foo`, which is `a -> a`, and not to the rest of the `f`'s type signature. This can be done only with `RankNTypes` extension.
-`bar` on the other hand has `forall` applied to the whole signature, and we didn't even need to write `forall` here since it would be there implicitly anyway.
+`bar` on the other hand has `forall` applied to the whole signature, and we could have even ommited this `forall` since it would be there implicitly anyway.
 
-Now, what does this mean? If we now have `f :: Int -> Int` and `g :: a -> a`, `foo g` will compile, while `foo f` will not! On the other hand both `bar f` and `bar g` will compile.
-This is because we specified, with `forall`, that `foo` needs a polymorphic function (function that takes value of **any** type and returns value of that same type) as the first argument, so we can't pass it a function like `f` that works only for `Int`. On the other hand, `bar` needs a function that takes value of **some** type and returns the value of that same type, so `f` is completely fine although it works only with `Int`, while `g` is also ok since it is more general than what is needed. 
+Now, what does this mean? If we now have `specificFunc :: Int -> Int` and `polymorphicFunc :: a -> a`, `foo polymorphicFunc` will compile, while `foo specificFunc` will not! On the other hand both `bar specificFunc` and `bar polymorphicFunc` will compile.
+
+This is because we specified, with `forall`, that `foo` needs a polymorphic function (function that takes value of **any** type and returns value of that same type) as the first argument, so we can't pass it a function like `specificFunc` that works only for `Int` -> such function is too specific.
+On the other hand, `bar` needs a function that takes value of **some** type and returns the value of that same type, so `specificFunc` is completely fine since it works only with `Int`, while `polymorphicFunc` is also ok although it is more general than what is needed, since compiler can easily specialize it. 
 
 Another example is `liftPair` function:
 ```hs
 liftPair :: (forall x. x -> f x) -> (a, b) -> (f a, f b)
+liftPair func (y, z) = (func y, func z)
 ```
 ```
 >> liftPair (:[]) (1, "a")
