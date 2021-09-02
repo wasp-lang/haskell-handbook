@@ -8,6 +8,24 @@ NOTE: This is just a quick overview, you should supplement it with in-depth tuto
 
 Template Haskell (TH) allows us to write "macros" -> Haskell code that runs during compile time (so called "meta code") and generates Haskell code that becomes part of our Haskell program (so called "object code").
 
+Example of meta code:
+```hs
+genId :: Q Exp
+genId = do
+  x <- newName "x"
+  lamE [varP x] (varE x)
+```
+
+By doing
+```hs
+$(genId)
+```
+
+we generate following object code:
+```hs
+\x -> x
+```
+
 You need to enable `TemplateHaskell` extension for it to work, and you will want to import `Language.Haskell.TH` when writing meta code.
 
 ### Main features / concepts
