@@ -2,7 +2,7 @@
 TLDR; How do you make your code open to both adding new operations and new types without modifying existing code?
 
 In OOP, by default it is easy to add new types (add new class that implements existing operations) but to add new operations you need to modify the existing classes.  
-In FP, by default it is easy to add new operation (new new function that pattern matches on existing types) but to add new types you need to modify the existing operations.
+In FP, by default it is easy to add new operation (new function that pattern matches on existing types) but to add new types you need to modify the existing operations.
 
 In OOP, the Visitor Pattern can be used to flip the problem so it is the same as in Haskell.
 
@@ -206,7 +206,7 @@ Does this mean that Expression Problem is broken? Really depends on how those ty
 ## Conclusion
 The "Tagless Final" approach seems like a good way to completely solve Expression Problem in Haskell, although I am not yet convinced practical is the solution in real world use cases (but I haven't understood / tested it out well enough so that is why).
 
-On the other hand, the simpler approach I used above almost solves it (requires updating of just one line when a new operation is added). I find it more intuitive, and I am more assured of its practicality in real world use cases, so I would probably pick that one for now if need be.
+On the other hand, the simpler approach I used above almost solves it (requires updating of just one line when a new operation is added), I find it more intuitive, and I am more assured of its practicality in real world use cases, so I would probably pick that one for now if need be.
 
 Finally, there are other ways to solve this problem that I haven't investigated yet (because they seemed more complex); it might be worth looking into [Data Types A La Carte](http://www.cs.ru.nl/~W.Swierstra/Publications/DataTypesALaCarte.pdf) .
 
