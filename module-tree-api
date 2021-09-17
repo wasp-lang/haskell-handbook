@@ -15,4 +15,6 @@ E.g., if we have Analyzer,  Analyzer.Internal.Combinators and Analyzer.Internal.
 Analyzer.Internal.Combinators and Analyzer.Internal.Common are implementation details and not part of the Analyzer API.
 However, this is a convention and is not enforced by compiler in any way.
 
+What I don't like about Internal is that, besides not being enforced, it is boring/tedious to rename the modules/files in order to make them Internal.
+
 Question: Is there a better way? Maybe some kind of GHC extension that doesn't allow importing internal modules, taking Internal into account?
