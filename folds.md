@@ -1,3 +1,5 @@
+TODO: Improve this document, I just quickly copy pasted some relevant content.
+
 Difference between foldl, foldl' and foldr: https://wiki.haskell.org/Foldr_Foldl_Foldl%27 .
 
 TLDR (from the Conclusion chapter of the link above); normally you will want to use foldr or foldl', as foldl will in most cases accumuluate unnecesary memory.
