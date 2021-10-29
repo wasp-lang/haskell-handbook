@@ -1,8 +1,8 @@
-# Stack, Cabal and figuring out dependencies version bounds
+# [WIP] Stack, Cabal and figuring out dependencies version bounds
 
 TODO: This document is (will be) covering too much, we should probably split it into multiple docs.
 
-TODO: Write the doc. Here is just a sketch of what to write about:
+TODO: This doc is work in progress. Here is just a sketch of what to write about:
  - stack vs cabal -> cabal is THE package mager and works like other package managers, while stack is alternative
                      that uses the same core library (cabal) but uses the concept of snapshots on top to solve some of the problems cabal has/had.
  - cabal diamond dependency problem -> explain what it is and why it happens, mention how this is not a problem in non-typed language (e.g. js + npm).
