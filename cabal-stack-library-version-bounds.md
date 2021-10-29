@@ -5,6 +5,8 @@ TODO: This document is (will be) covering too much, we should probably split it 
 TODO: This doc is work in progress. Here is just a sketch of what to write about:
  - stack vs cabal -> cabal is THE package mager and works like other package managers, while stack is alternative
                      that uses the same core library (cabal) but uses the concept of snapshots on top to solve some of the problems cabal has/had.
+                     There are no "stack" packages -> on Hackage, all packages are cabal packages. To understand this better, explain
+                     the difference between cabal format, cabal tool and cabal packages.
  - cabal diamond dependency problem -> explain what it is and why it happens, mention how this is not a problem in non-typed language (e.g. js + npm).
  - talk about how cabal resolves dependencies, if we haven't covered it enough yet.
  - talk about dependency version bounds
