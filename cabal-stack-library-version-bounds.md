@@ -18,6 +18,8 @@ TODO: This doc is work in progress. Here is just a sketch of what to write about
      - no matter if you are using Stack or Cabal, the uploaded package needs to be uploaded with .cabal that defines the version bounds, Hackage requires that.
        - if using Stack, `stack sdist` generated cabal project with .cabal. For that file to have version bounds, you need to define them in package.yaml or set
          `pvp-bounds: both` in stackage.yaml so that Stack automatically infers the version bounds based on the resolver and puts those into generated .cabal file.
+         Once uploaded to Hackage, there is nothing stack-related left in the package itself - it is a cabal package.
+         There is nothing such as "Stack package" - Stack is "just" a different client/approach for working with cabal packages.
        - if using Cabal, your .cabal file is the one that is used and therefore it needs to have version bounds.
      - other important thing is that you want your version bounds to not be too strict, because otherwise cabal will have very hard time resolving dependenies
        when your package is involved since it is very limited in what it can work with.
