@@ -1,6 +1,7 @@
-# [WIP] Stack, Cabal and figuring out dependencies version bounds
+# [WIP] Package management (both when building your project/package and when depending on other packages)
 
 TODO: This document is (will be) covering too much, we should probably split it into multiple docs.
+
 
 TODO: This doc is work in progress. Here is just a sketch of what to write about:
  - stack vs cabal -> cabal is THE package mager and works like other package managers, while stack is alternative
@@ -34,3 +35,39 @@ TODO: This doc is work in progress. Here is just a sketch of what to write about
        This automatically covers couple last GHCs and you have an easy way of running those tests.
        We should ideally test this in CI: test our package with multiple Stack resolvers (nightly, and couple of last LTSes).
        More about this here: https://github.com/wasp-lang/strong-path/issues/37 .
+
+# Cabal & Stack
+
+Simplest way to write some code in Haskell and get going is to write it directly in the ghci REPL, or to write a single-file script and then load it and execute it with ghci.
+
+However, if you are building anything a bit more complex, you will want to organize it into a project/package that builds into an executable and/or library and very likely depends on other Haskell packages.
+
+The standard/official solution for this is Cabal, and then there are popular alternatives like Stack (or more general Nix, Bazel, Shake, ...) that build on top of Cabal in order to provide different experience.
+
+[Cabal](https://haskell.org/cabal) and [Stack](https://haskellstack.org) are the most popular ones so we will shortly introduce both of them here and talk about the differences between them.
+
+## Cabal
+
+Cabal is the standard package system for Haskell software.
+
+It helps you configure (e.g. define version, dependencies, ...), build (compile) and distribute (e.g. publish as a library) your Haskell project - basically all of the stuff you need to manage your project.
+
+This means that, simply put, Cabal is for Haskell what npm is for Javascript, what pip is for Python, or what Cargo is for Rust.
+
+Some important terms when talking about Cabal:
+- **cabal package** or just **package** -> unit of code distribution in Haskell. Central part of it is its *cabal file*, which describes it. *cabal package* is analogous to *npm package* for Javascript, or *crate* in case of Rust.
+- **cabal file** -> file named <name_of_your_package>.cabal that describes the package (version, dependencies, ...), analogous to package.json for npm or Cargo.toml for Cargo.
+- **cabal CLI** or just **cabal** -> `cabal` is a command line tool that you use to build and install Cabal packages (based on the *cabal file*). Analogous to `npm` for Javascript, `pip` for Python, or `cargo` for Rust.
+- **Hackage** -> central package archive for cabal packages. Analogous to PyPI for Python, or crates.io for Rust.
+
+When downloading and resolving packages that are dependencies of your project, `cabal` mostly works as you would expect -> each package is referenced by its name and the range of versions you are ok with (e.g. `filepath: >=1.2 & <1.5`), and `cabal` makes sure to download the newest version of each package that fits the specified version range.
+So, similar as `npm` or other package managers do.
+
+However, there is a specific problem that comes with `cabal`, and which is caused by Haskell being a statically typed language: TODO diamond problem
+
+TODO: multiple GHC versions with cabal? Stack takes care of that? How does cabal know which GHC to use for specific project? What about versions changing with time -> which is why we need cabal freeze? What is cabal freeze? Is it like package.lock.json? Stack also solves this.
+
+
+
+
+
