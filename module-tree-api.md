@@ -1,3 +1,5 @@
+# WIP
+
 TODO: Rename title to private vs public, or internal implementation vs API? And then I can talk about exporting vs not exporting from the module as simplest form of it,
 and then comes using Internal to indicate which modules are implementation details of their parent module. I should also provide specific exmaple with module structure.
 And here is reddit question where I asked about this: https://www.reddit.com/r/haskell/comments/ppyxzv/how_to_define_module_api_toward_other_modules/ .

@@ -1,14 +1,6 @@
-# [WIP] Stack, Cabal and figuring out dependencies version bounds
-
-TODO: This document is (will be) covering too much, we should probably split it into multiple docs.
+# [WIP] Determining dependencies version bounds
 
 TODO: This doc is work in progress. Here is just a sketch of what to write about:
- - stack vs cabal -> cabal is THE package mager and works like other package managers, while stack is alternative
-                     that uses the same core library (cabal) but uses the concept of snapshots on top to solve some of the problems cabal has/had.
-                     There are no "stack" packages -> on Hackage, all packages are cabal packages. To understand this better, explain
-                     the difference between cabal format, cabal tool and cabal packages.
- - cabal diamond dependency problem -> explain what it is and why it happens, mention how this is not a problem in non-typed language (e.g. js + npm).
- - talk about how cabal resolves dependencies, if we haven't covered it enough yet.
  - talk about dependency version bounds
    - if you are writing project that is not published on Hackage
      - if you are using Stack
@@ -34,3 +26,13 @@ TODO: This doc is work in progress. Here is just a sketch of what to write about
        This automatically covers couple last GHCs and you have an easy way of running those tests.
        We should ideally test this in CI: test our package with multiple Stack resolvers (nightly, and couple of last LTSes).
        More about this here: https://github.com/wasp-lang/strong-path/issues/37 .
+
+
+
+When writing a Haskell project, be it a Stack or Cabal project, you will have a list of dependencies, for which you can specify version bounds (e.g. `filepath: >=1.2 && <1.3` where `filepath` is name of the dependency and `>=1.2 && <1.3` is its version bounds).
+
+Sometimes it can be hard to figure out if you should specify version bounds at all or not, and if yes, how do you determine the bounds. Here we are going to offer an approach that helps with answering these questions.
+
+## Resources
+- https://www.reddit.com/r/haskell/comments/d4o7d6/how_should_you_choose_version_bounds_for_library/
+- https://www.reddit.com/r/haskell/comments/qhn8es/how_do_i_figure_out_dependency_version_bounds_for/
