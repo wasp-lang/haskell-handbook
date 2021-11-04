@@ -5,11 +5,11 @@ When writing a Haskell project, be it a Stack or Cabal project, you will have a 
 Sometimes it can be hard to figure out if you should specify version bounds for your dependencies at all or not, and if yes, how do you determine the bounds?
 Here we are going to explain the reasoning that should help answer those questions.
 
-NOTE: Haskell ecosystem is not using SemVer as a versioning policy, instead it is using [PVP](https://pvp.haskell.org/).
+First question is: is the project a library or an executable?
+
+> NOTE: Haskell ecosystem is not using SemVer as a versioning policy, instead it is using [PVP](https://pvp.haskell.org/).
 It is very similar but instead of `MAJOR.MINOR.PATCH` it is `MAJOR.MAJOR.MINOR.PATCH`.
 So first two numbers together make a `MAJOR` component in the version.
-
-First question is: is it a library or an executable?
 
 ## Executable
 
