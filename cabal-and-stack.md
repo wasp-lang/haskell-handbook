@@ -68,4 +68,8 @@ Stack also helps avoid problems with dependency resolution, but cabal also impro
 In practice, I would say that going with Stack is the best starting option, since it ensures that correct version of ghc is used and you don't have to think about the versions of your dependencies.
 Then, with time, as your needs/requirements grow, you should be able to make a choice if it makes sense to move to cabal at some point or not.
 
+## Resources
+- Comments I got on first version of this article: https://www.reddit.com/r/haskell/comments/qm4xlg/request_for_review_short_article_on_cabal_and/
+
+TODO: Explain how with cabal freeze + with-compiler you can achieve reproducibility, similar as Stack offers.
 TODO: How do you pick which version of GHC to use with cabal -> the one that ghcup recommends? Why that one? If there are multiple developers working on same codebase, how do I ensure they all use the same version of cabal and ghc? Is that even important? cabal-freeze freezes package versions, similar like package.lock.json does, but does it freeze ghc version?
