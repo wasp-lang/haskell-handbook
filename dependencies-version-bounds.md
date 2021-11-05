@@ -2,14 +2,22 @@
 
 When writing a Haskell project, be it a Stack or Cabal project, you will have a list of dependencies, for which you can specify version bounds (e.g. `filepath: >=1.2 && <1.3` where `filepath` is name of the dependency and `>=1.2 && <1.3` is its version bounds).
 
-Sometimes it can be hard to figure out if you should specify version bounds for your dependencies at all or not, and if yes, how do you determine the bounds?
-Here we are going to explain the reasoning that should help answer those questions.
-
-First question is: are we defining dependencies for a library or an executable?
-
 > NOTE: Haskell ecosystem is not using SemVer as a versioning policy, instead it is using [PVP](https://pvp.haskell.org/).
 It is very similar but instead of `MAJOR.MINOR.PATCH` it is `MAJOR.MAJOR.MINOR.PATCH`.
 So first two numbers together make a `MAJOR` component in the version.
+
+Sometimes it can be hard to figure out if you should specify version bounds for your dependencies at all or not, and if yes, how do you determine the bounds?
+In this article we are going to explain the reasoning that should help answer those questions.
+
+
+## TLDR; Diagram
+
+Below is a quick diagram capturing the process of determining dependencies version bounds.
+
+Read on to learn in details about every step.
+
+![Diagram](dependencies-version-bounds-diagram.png)
+
 
 ## Executable
 
@@ -38,6 +46,7 @@ This way you are fixing the exact versions of your dependencies and there is no 
 When you want to update the dependencies or add a new dependency, you should update `<myproject>.cabal` file accordingly, run `cabal freeze` to regenerate the `cabal.project.freeze`, and again have that commited to your version control.
 
 To also fix the version of GHC, you can define `with-compiler: ghc-8.10.4` in the `cabal.project` file.
+
 
 ## Library
 
@@ -144,6 +153,11 @@ Finally, you could (and probably should) run these tests in the CI instead of ma
 
 For an example of such CI workflow, you can take a look at https://github.com/wasp-lang/strong-path/blob/master/.github/workflows/ci.yaml .
 
+#### Additional CI testing tips
+
+1. There is a cabal option [`tested-with`](https://cabal.readthedocs.io/en/latest/cabal-package.html#pkg-field-tested-with) -> you might want to add that one to describe with which GHC versions was your library tested.
+2. [haskell-ci](https://github.com/haskell-CI/haskell-ci) can create the whole CI workflow for you, that tests your library with different GHC configurations.
+
 ### Example
 
 Let's say I have a library that depends on `template-haskell` (TH) and I need to determine the version bounds for it.
@@ -167,11 +181,6 @@ Finally, my version bounds are `>=2.16 && <2.18`.
 
 I also ensure my CI workflow runs tests twice -> first with the latest LTS, and then with the nightly resolver.
 
-### Diagram
-
-![Diagram](dependencies-version-bounds-diagram.png)
-
-TODO: haskell-ci? tested-with:?
 
 ## Resources
 - https://www.reddit.com/r/haskell/comments/d4o7d6/how_should_you_choose_version_bounds_for_library/
