@@ -5,19 +5,21 @@ When writing a Haskell project, be it a Stack or Cabal project, you will have a 
 Sometimes it can be hard to figure out if you should specify version bounds for your dependencies at all or not, and if yes, how do you determine the bounds?
 Here we are going to explain the reasoning that should help answer those questions.
 
-First question is: is the project a library or an executable?
+First question is: are we defining dependencies for a library or an executable?
 
 > NOTE: Haskell ecosystem is not using SemVer as a versioning policy, instead it is using [PVP](https://pvp.haskell.org/).
 It is very similar but instead of `MAJOR.MINOR.PATCH` it is `MAJOR.MAJOR.MINOR.PATCH`.
 So first two numbers together make a `MAJOR` component in the version.
 
+TODO: Diagram.
+
 ## Executable
 
-If it is an executable, then you want to keep the version bounds as tight as possible, ideally completely fixed, so that you have consistency between different builds.
+If you are defining dependencies for an executable, then you want to keep the version bounds as tight as possible, ideally completely fixed, so that you have consistency between builds.
 
-Where this is most important is when running tests vs building the release version of your executable -> you want to be sure that same dependency versions were used when testing the executable as when it was being built for release, because otherwise you might have untested behaviour become a part of your release. Even if dependency changed only with a minor change, e.g. from `1.0.0.0` to `1.0.0.1`, which could happen if your bounds are `>=1.0 && <1.1` and version `1.0.0.1` just got released, it might be that author of that change made a mistake and while fixing a bug introduced a new bug that you are not aware of.
+Where this consistency is most important is when running tests vs building the release version of your executable -> you want to be sure that same dependency versions were used when testing the executable as when it was being built for release, because otherwise you might have untested behaviour become a part of your release. Even if dependency changed only with a "patch" change, e.g. from `1.0.0.0` to `1.0.0.1`, which could happen if your bounds are `>=1.0 && <1.1` and version `1.0.0.1` just got released, it might be that author of that change made a mistake and while fixing one bug introduced a new bug that you are not aware of and that you didn't run through tests.
 
-Other than that, it is also convenient when all developers that are working on the project are using exactly the same dependency versions, because you avoid some of the "it works on my machine" problems and you also have them constantly testing, in a way, the final solution by running it locally.
+Other than that, it is also convenient when all developers that are working on the project are using exactly the same dependency versions, because you avoid some of the "it works on my machine" problems and you also have them constantly testing, in a way, the final solution by running it locally (disclaimer: this is in no way replacement for automated testing).
 
 This is true for any language, not just Haskell -> for example in Javascript/npm this is achieved by using package.lock.json.
 
@@ -35,13 +37,13 @@ If you are using Cabal, the best solution is to use `cabal freeze` command, whic
 
 This way you are fixing the exact versions of your dependencies and there is no need to specify the version bounds in `<myproject>.cabal` file.
 
-When you want to update the dependencies or add a new dependency, you should update `<myproject>.cabal` file accordingly, run `cabal freeze` to update the `cabal.project.freeze`, and again have that commited to your version control.
+When you want to update the dependencies or add a new dependency, you should update `<myproject>.cabal` file accordingly, run `cabal freeze` to regenerate the `cabal.project.freeze`, and again have that commited to your version control.
 
-To also fix the version of GHC, you can provide `with-compiler: ghc-8.10.4` in the `cabal.project` file.
+To also fix the version of GHC, you can define `with-compiler: ghc-8.10.4` in the `cabal.project` file.
 
 ## Library
 
-If it is a library that you will publish on Hackage to be used by others, you want to keep the version bounds of your dependencies loose, to make it easier for your library to be used alongside other libraries. So exactly the opposite approach then when dealing with an executable.
+If you are defining dependencies for a library that you will publish on Hackage to be used by others, you want to keep the version bounds of your dependencies loose, to make it easier for your library to be used alongside other libraries. So exactly the opposite approach then when dealing with an executable.
 
 Why is this important? When `cabal` is resolving dependencies, there are often situations where there are multiple dependencies depending on a same dependency (e.g. both `foo` and `bar` depend on `base`), and then `cabal` needs to figure out a version of that common dependency (e.g. `base`) that satisfies version bounds specified by both dependers (e.g. `foo` and `bar`). If `foo` and `bar` have tight version bounds for `base` that don't have any overlap, e.g. `foo` has `base: ==1.2.*` and `bar` has `base: ==1.3.*`, then `cabal` will not be able to find a version of `base` that satisfies both. This is why it is important that libraries have loose version bounds, to increase the chance that `cabal` will be able to find the version of common dependency that satisfies all of its dependers, even if there is a bunch of them.
 
@@ -53,9 +55,9 @@ The main constraint we have to think about here is that you want to ensure your 
 This requirement is opposite to wanting to have loose version bounds, since the looser they are, the harder it is to ensure our library works against them.
 Therefore, we want to have as loose bounds as possible while still keeping our library maintainable / testable.
 
-For an example, if your library has dependencies `foo: >=1.0 && <2.0` and `bar: >=3.5 && <3.6`, you would want to ensure that it works correctly if `cabal` resolves `foo` to `1.0` and `bar` to `3.5`, but it should also work if it resolves `foo` to `1.4` and `bar` to `3.5.1`, or `foo` to `1.9.1` and `bar` to `3.5.0.1`, and so on and on, because you just don't know what `foo` and `bar` will be resolved to.
+For an example, if your library has dependencies `foo: >=1.0 && <2.0` and `bar: >=3.5 && <3.6`, you would want to ensure that it works correctly if `cabal` resolves `foo` to `1.0` and `bar` to `3.5`, but it should also work if it resolves `foo` to `1.4` and `bar` to `3.5.1`, or `foo` to `1.9.1` and `bar` to `3.5.0.1`, and so on and on, because you just can't know in advance what `foo` and `bar` will be resolved to.
 
-Obviously there is a huge amount of combinations here (especially when there are plenty of dependers and not just two) and we can't possibly run tests for all of them.
+Obviously there is a huge amount of combinations here (especially when there are plenty of dependencies and not just two) and we can't possibly run tests for all of them.
 
 However, there are proven practical ways to have pretty good confidence in your version bounds while still keeping them loose enough and without testing all of the combinations, so let's explore those.
 
@@ -75,21 +77,20 @@ We can further split this problem into two sub-problems:
 
 What you want here is to pick a version that is not too old nor too new.
 
-If it is very old, you are making life for yourself harder since you have a bigger range of versions to cover regarding ensuring that your library works with it, and you don't get much benefits since most of the other libraries (that are being kept up to date) are probably not using such old version.
+If it is too old, you are making life harder for yourself since you have a bigger range of versions for which you need to guarantee that your library works correctly.
+On the other hand, you don't get much benefits from choosing such an old version since most of the other libraries (that are being kept up to date) are probably not using such an old version of this dependency anyway.
 
 If it is too new, you are cutting it tight and risk having version bounds that are not loose enough.
 
-How do you figure out what is the right spot between "old" and "new" though?
+How do you figure out what is the right spot between "old" and "new" though? How do you quantify "old" or "new"?
 
 You could go with a simple rule like this: find the newest major version that is at least 1 year old and go with that.
 
-If you want to be "smarter", you can learn more about the dependency package itself in order to determine the best lower bound:
+As a more advanced approach, you can learn more about the dependency package itself in order to determine the best lower bound:
 - If it is a very stable package that doesn't change much through time, you can pick a much older version.
-- You could find other popular packages that are using this dependency and check out what are they using as a lower bound for it.
-- You could check out the version of the package in the current Stackage LTS and go with that. If you want to be a bit more inclusive, you can pick a bit older LTS.
 - You could go through the changelog of the package to understand how it changed and how those changes affect the way you use it in your library, and then pick the oldest version that you think will work based on that.
-
-Finally, you could do some or all of the above and take some "average".
+- You could check out the version of the package in the current Stackage LTS and go with that. If you want to be a bit more inclusive, you can pick a bit older LTS.
+- You could find other popular packages that are using this dependency and check out what are they using as a lower bound for it.
 
 #### Upper bound
 
@@ -100,12 +101,14 @@ So, if the latest version of the package is `2.3.0.1`, your upper bound would be
 If you want to be a bit more adventurous, you could investigate the package and try to predict the changes future major versions might bring based on the changelog and previous changes.
 By comparing that against the way you are using that library, you could figure out a more relaxed upper bound that has a good chance of working in the future and go with that.
 That way you buy more time until the next time you will need to update the version bounds, but you also increase the risk of your library breaking with time.
+If not confident, it is probably best to keep it simple and stick with the next major version, and you will update the bound when the time comes.
 
 Again, same as for lower bound, you could also take a look at how other packages out there define upper bound for this dependency and learn something from that.
 
 ### Updating version bounds
 
-Some time has passed since you defined the version bounds for dependency `D` and you feel your upper bound for it is getting "old", or somebody opened an issue saying that it is too old, or you want to pull in the newer version to get new features / bug fixes that you need.
+Let's say some time has passed since you defined the version bounds for dependency `D` and you feel your upper bound for it is getting "old", or somebody opened an issue saying that it is too old, or you want to pull in the newer version to get new features / bug fixes that you need.
+This means it is time to update those version bounds!
 
 #### Upper bound
 
@@ -121,7 +124,8 @@ When you decide to update it, you use the same approach as when defining initial
 
 ### Testing in regards to version bounds
 
-As mentioned before, ideally you would test all the valid combinations of all the possible versions as defined by version bounds, but that is not possible in practice.
+As mentioned before, you want to ensure that your library works correctly with any valid combination of possible dependency versions as defined by version bounds.
+Ideally you would test all these combinations, but that is not possible in practice as it is too resource intensive.
 
 The simplest practical solution is to run tests once for the oldest versions that fit into version bounds, and to also run tests with the latest versions that fit into version bounds.
 You could do this once you define initial bounds.
@@ -135,8 +139,12 @@ Easy way to test with versions of different age is to run tests while using diff
 So, you could run tests twice, once with the latest LTS and once with the nightly resolver. Or, you could run them three times, once with the older LTS, once with the current LTS, and once with the nightly resolver.
 
 If you are using cabal to build your project, you can achieve the same thing (travel into past) by using `index-state` configuration option, which tells cabal to use Hackage as it was at the specified time.
+You would then run tests once with no index-state set, so that latest versions are used, and then you would run it with `index-state` set to such point in time that it uses versions that are close to the lower bounds of your version bounds.
+And finally you could also run it with `index-state` set to points in time in between now and that oldest `index-state`, to cover the middle ground.
 
-Finally, you could these in the CI instead of manually, ensuring that your library is always tested againt different sets of versions.
+Finally, you could (and probably should) run these tests in the CI instead of manually, ensuring that your library is always tested againt different sets of versions.
+
+For an example of such CI workflow, you can take a look at https://github.com/wasp-lang/strong-path/blob/master/.github/workflows/ci.yaml .
 
 ### Example
 
@@ -144,10 +152,10 @@ Let's say I have a library that depends on `template-haskell` (TH) and I need to
 
 I am using TH for the first time and I am still new to it, but I am pretty sure I am using the basic, core features and nothing especially exotic or new.
 
-Looking at https://hackage.haskell.org/package/template-haskell and clicking on the listed versions a bit, I see that `2.16` version is a bit more than a year old.
+Looking at https://hackage.haskell.org/package/template-haskell and clicking on the listed versions a bit, I see that `2.16` version is a bit more than a year old (time at the moment of writing this is Nov 2021).
 So that could be a good candidate for the lower bound.
 
-Looking at the changelog, I see that `2.16` introduced `reifyType` which I am actually using (so I was wrong about not using new features), so I should probably stick to `2.16` and not go any older.
+Looking at the changelog, I see that `2.16` introduced `reifyType` which I am actually using (so I was wrong about not using new features), so I should stick to `2.16` and not go any older, unless I am ready to modify my code in order to support older versions of TH.
 
 I want to take a look at other packages using TH, so I use https://packdeps.haskellers.com/reverse to search for them and I see they either specify no version bounds at all, or they vary a lot in what they use for lower bound, with almost none of them going newer than `2.16`, so I decide to stick with `2.16` for lower bound. I also see that they mostly use the next major version as an upper bound, so I will also go with that and use `2.19` as an upper bound (since the latest version is `2.18`).
 
@@ -160,6 +168,12 @@ All tests pass, but I am not feeling great about not testing `2.18` version of T
 Finally, my version bounds are `>=2.16 && <2.18`.
 
 I also ensure my CI workflow runs tests twice -> first with the latest LTS, and then with the nightly resolver.
+
+### Diagram
+
+![Diagram][dependencies-version-bounds-diagram.png]
+
+TODO: haskell-ci? tested-with:?
 
 ## Resources
 - https://www.reddit.com/r/haskell/comments/d4o7d6/how_should_you_choose_version_bounds_for_library/

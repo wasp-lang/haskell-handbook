@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="dependencies-version-bounds-diagram.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.2810466"
+     inkscape:cx="505.83641"
+     inkscape:cy="342.29825"
+     inkscape:window-width="2560"
+     inkscape:window-height="1363"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect234369"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect234279"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect220445"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect220439"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect215541"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect205275"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect205132"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect145626"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect145620"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect85724"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect85718"
+       is_visible="true"
+       lpeversion="1" />
+    <marker
+       style="overflow:visible"
+       id="marker85626"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path85624" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect85622"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect85618"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect85501"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect85495"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect78075"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect68175"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect23235"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect18189"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect14860"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect12007"
+       is_visible="true"
+       lpeversion="1" />
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.8)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path11861" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker11989"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleInL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(-0.8)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path11987" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleInL"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleInL"
+       inkscape:isstock="true">
+      <path
+         transform="scale(-0.8)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path11852" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect11717"
+       is_visible="true"
+       lpeversion="1" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="78.234306"
+       y="16.559254"
+       id="text2594"><tspan
+         sodipodi:role="line"
+         id="tspan2592"
+         style="font-size:7.05556px;stroke-width:0.264583"
+         x="78.234306"
+         y="16.559254">library or exe?</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#TriangleOutL)"
+       d="M 98.603598,20.148638 37.437226,40.010868"
+       id="path11715"
+       inkscape:path-effect="#path-effect11717"
+       inkscape:original-d="M 98.603598,20.148638 C 78.215071,26.769647 57.826282,33.39039 37.437226,40.010868" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="59.276485"
+       y="28.767517"
+       id="text12124"><tspan
+         sodipodi:role="line"
+         id="tspan12122"
+         style="font-size:5.64444px;stroke-width:0.264583;fill:#808080"
+         x="59.276485"
+         y="28.767517">exe</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="M 98.630977,20.155172 170.8139,40.23223"
+       id="path14856"
+       inkscape:path-effect="#path-effect14860"
+       inkscape:original-d="M 98.630977,20.155172 C 122.69185,26.847076 146.75284,33.53942 170.8139,40.23223" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="13.781898"
+       y="83.351555"
+       id="text15267"><tspan
+         sodipodi:role="line"
+         id="tspan15265"
+         style="font-size:7.05556px;stroke-width:0.264583"
+         x="13.781898"
+         y="83.351555">stack or cabal?</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="M 35.346024,86.34311 13.002442,116.9156"
+       id="path18185"
+       inkscape:path-effect="#path-effect18189"
+       inkscape:original-d="M 35.346024,86.34311 C 27.89836,96.533964 20.4505,106.7248 13.002442,116.9156" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="M 35.358712,86.352063 54.302173,116.81818"
+       id="path23231"
+       inkscape:path-effect="#path-effect23235"
+       inkscape:original-d="m 35.358712,86.352063 c 6.3146,10.155176 12.629086,20.310547 18.943461,30.466117" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="10.031161"
+       y="99.880959"
+       id="text23239"><tspan
+         sodipodi:role="line"
+         id="tspan23237"
+         style="font-size:5.64444px;fill:#808080;stroke-width:0.264583"
+         x="10.031161"
+         y="99.880959">stack</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#916f6f;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="-5.5971522"
+       y="124.12679"
+       id="text24797"><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="-5.5971522"
+         y="124.12679"
+         id="tspan34519">No need to specify</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="-5.5971522"
+         y="129.41846"
+         id="tspan34523">any version bounds</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="-5.5971522"
+         y="134.71011"
+         id="tspan42005">at all, Stack will take</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="-5.5971522"
+         y="140.00179"
+         id="tspan162962">care of it.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#916f6f;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="37.431259"
+       y="124.37383"
+       id="text43533"><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="37.431259"
+         y="124.37383"
+         id="tspan43527">No need to specify</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="37.431259"
+         y="129.6655"
+         id="tspan43529">any version bounds</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="37.431259"
+         y="134.95717"
+         id="tspan43531">at all, but you need</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="37.431259"
+         y="140.24883"
+         id="tspan48815">to use `cabal freeze`</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="37.431259"
+         y="145.54048"
+         id="tspan48817">as part of your workflow.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="45.426414"
+       y="99.612297"
+       id="text62419"><tspan
+         sodipodi:role="line"
+         id="tspan62417"
+         style="font-size:5.64444px;fill:#808080;stroke-width:0.264583"
+         x="45.426414"
+         y="99.612297">cabal</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="135.78226"
+       y="28.844162"
+       id="text64568"><tspan
+         sodipodi:role="line"
+         id="tspan64566"
+         style="font-size:5.64444px;fill:#808080;stroke-width:0.264583"
+         x="135.78226"
+         y="28.844162">library</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.260094;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect68363"
+       width="40.358658"
+       height="22.209229"
+       x="-6.9093351"
+       y="119.62354" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.319761;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect68467"
+       width="47.994907"
+       height="28.227072"
+       x="36.069981"
+       y="119.65339" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.267479;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect68469"
+       width="48.047192"
+       height="19.729855"
+       x="12.156564"
+       y="42.628227" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#916f6f;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="16.506411"
+       y="50.009056"
+       id="text68481"><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="16.506411"
+         y="50.009056"
+         id="tspan68479">You want to keep</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="16.506411"
+         y="55.30072"
+         id="tspan76933">version bounds fixed.</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 35.433515,63.601087 0.02485,13.101294"
+       id="path78071"
+       inkscape:path-effect="#path-effect78075"
+       inkscape:original-d="m 35.433515,63.601087 c 0.0086,4.367064 0.0169,8.734161 0.02485,13.101294" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.267479;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect78247"
+       width="48.047192"
+       height="19.729855"
+       x="150.77103"
+       y="42.678249" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#916f6f;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="152.57385"
+       y="48.160629"
+       id="text78255"><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="152.57385"
+         y="48.160629"
+         id="tspan78249">You want to keep</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="152.57385"
+         y="53.452293"
+         id="tspan78253">version bounds loose</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="152.57385"
+         y="58.743954"
+         id="tspan82937">but testable.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="91.073479"
+       y="102.34891"
+       id="text87548"><tspan
+         sodipodi:role="line"
+         id="tspan87546"
+         style="font-size:5.64444px;fill:#808080;stroke-width:0.264583"
+         x="91.073479"
+         y="102.34891">lower bound</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="142.673"
+       y="102.40458"
+       id="text89358"><tspan
+         sodipodi:role="line"
+         id="tspan89356"
+         style="font-size:5.64444px;fill:#808080;stroke-width:0.264583"
+         x="142.673"
+         y="102.40458">upper bound</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.329654;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect93164"
+       width="41.571079"
+       height="34.636761"
+       x="89.308189"
+       y="117.3232" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#916f6f;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="90.927536"
+       y="122.66064"
+       id="text93172"><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="90.927536"
+         y="122.66064"
+         id="tspan117083">Pick version that is</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="90.927536"
+         y="127.9523"
+         id="tspan127613">neither too old nor</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="90.927536"
+         y="133.24396"
+         id="tspan207515">too new. Could be</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="90.927536"
+         y="138.53563"
+         id="tspan207523">1 year old, or maybe</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="90.927536"
+         y="143.82729"
+         id="tspan207527">version from the</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="90.927536"
+         y="149.11894"
+         id="tspan138011">latest Stack LTS.</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.284884;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect139731"
+       width="41.571087"
+       height="25.867422"
+       x="134.74557"
+       y="117.35636" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#916f6f;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="136.09837"
+       y="122.68225"
+       id="text139743"><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="136.09837"
+         y="122.68225"
+         id="tspan139741">Pick next major</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="136.09837"
+         y="127.97392"
+         id="tspan147800">version (excluded)</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="136.09837"
+         y="133.26558"
+         id="tspan156840">after the latest one.</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="M 173.99776,63.854642 149.04322,76.634917"
+       id="path145616"
+       inkscape:path-effect="#path-effect145620"
+       inkscape:original-d="m 173.99776,63.854642 c -8.31741,4.261452 -16.63593,8.520847 -24.95454,12.780275" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="106.68395"
+       y="77.087456"
+       id="text199852"><tspan
+         sodipodi:role="line"
+         id="tspan199850"
+         style="font-size:7.05556px;stroke-width:0.264583"
+         x="106.68395"
+         y="77.087456">determining</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:7.05556px;stroke-width:0.264583"
+         x="106.68395"
+         y="85.906906"
+         id="tspan202666">version bounds</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 131.16153,90.741318 -16.0458,22.991222"
+       id="path205128"
+       inkscape:path-effect="#path-effect205132"
+       inkscape:original-d="m 131.16153,90.741318 c -5.34727,7.664584 -10.6965,15.327872 -16.0458,22.991222" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 131.19666,90.741318 16.0458,22.991222"
+       id="path205271"
+       inkscape:path-effect="#path-effect205275"
+       inkscape:original-d="m 131.19666,90.741318 c 5.34727,7.664584 10.6965,15.327872 16.0458,22.991222" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 173.8248,64.041646 42.25051,13.822806"
+       id="path215537"
+       inkscape:path-effect="#path-effect215541"
+       inkscape:original-d="m 173.8248,64.041646 c 14.0822,4.609073 28.16628,9.215922 42.25051,13.822806" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="210.38336"
+       y="86.984207"
+       id="text215547"><tspan
+         sodipodi:role="line"
+         style="font-size:7.05556px;stroke-width:0.264583"
+         x="210.38336"
+         y="86.984207"
+         id="tspan215545">testing</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 220.79473,112.45704 -16.0458,22.99132"
+       id="path220435"
+       inkscape:path-effect="#path-effect220439"
+       inkscape:original-d="m 220.79473,112.45704 c -5.34727,7.66463 -10.6965,15.32796 -16.0458,22.99132" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 220.79473,112.45704 16.0458,22.99132"
+       id="path220441"
+       inkscape:path-effect="#path-effect220445"
+       inkscape:original-d="m 220.79473,112.45704 c 5.34727,7.66463 10.6965,15.32796 16.0458,22.99132" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="196.18898"
+       y="123.52211"
+       id="text220529"><tspan
+         sodipodi:role="line"
+         id="tspan220527"
+         style="font-size:5.64444px;fill:#808080;stroke-width:0.264583"
+         x="196.18898"
+         y="123.52211">stack</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="231.93761"
+       y="123.06303"
+       id="text220533"><tspan
+         sodipodi:role="line"
+         id="tspan220531"
+         style="font-size:5.64444px;fill:#808080;stroke-width:0.264583"
+         x="231.93761"
+         y="123.06303">cabal</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.303497;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect220615"
+       width="41.597237"
+       height="29.339752"
+       x="181.07297"
+       y="138.20406" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#916f6f;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="182.70538"
+       y="143.55449"
+       id="text220629"><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="182.70538"
+         y="143.55449"
+         id="tspan220627">Test with different</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="182.70538"
+         y="148.84615"
+         id="tspan224687">resolvers: nightly,</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="182.70538"
+         y="154.13782"
+         id="tspan224689">latest LTS, and</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="182.70538"
+         y="159.42947"
+         id="tspan224691">optionally some</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="182.70538"
+         y="164.72115"
+         id="tspan224693">older LTSs.</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.246113;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect226839"
+       width="41.654621"
+       height="19.267149"
+       x="225.67113"
+       y="138.22697" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#916f6f;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="227.33223"
+       y="143.60609"
+       id="text226851"><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="227.33223"
+         y="143.60609"
+         id="tspan226849">Use `index-state` to</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="227.33223"
+         y="148.89775"
+         id="tspan231935">test with older</tspan><tspan
+         sodipodi:role="line"
+         style="font-size:4.23333px;fill:#916f6f;stroke-width:0.264583"
+         x="227.33223"
+         y="154.18942"
+         id="tspan231937">versions.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05556px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="198.75824"
+       y="109.26807"
+       id="text234363"><tspan
+         sodipodi:role="line"
+         id="tspan234361"
+         style="font-size:7.05556px;stroke-width:0.264583"
+         x="198.75824"
+         y="109.26807">stack or cabal?</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutL)"
+       d="m 220.40986,89.517596 0.0248,13.101284"
+       id="path234365"
+       inkscape:path-effect="#path-effect234369"
+       inkscape:original-d="m 220.40986,89.517596 c 0.009,4.367064 0.0169,8.734161 0.0248,13.101284" />
+  </g>
+</svg>
