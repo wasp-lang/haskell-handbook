@@ -11,8 +11,6 @@ First question is: are we defining dependencies for a library or an executable?
 It is very similar but instead of `MAJOR.MINOR.PATCH` it is `MAJOR.MAJOR.MINOR.PATCH`.
 So first two numbers together make a `MAJOR` component in the version.
 
-TODO: Diagram.
-
 ## Executable
 
 If you are defining dependencies for an executable, then you want to keep the version bounds as tight as possible, ideally completely fixed, so that you have consistency between builds.
@@ -171,7 +169,7 @@ I also ensure my CI workflow runs tests twice -> first with the latest LTS, and 
 
 ### Diagram
 
-![Diagram][dependencies-version-bounds-diagram.png]
+![Diagram](dependencies-version-bounds-diagram.png)
 
 TODO: haskell-ci? tested-with:?
 
