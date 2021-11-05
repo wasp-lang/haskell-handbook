@@ -21,7 +21,7 @@ Read on to learn in details about every step.
 
 ## Executable
 
-If you are defining dependencies for an executable, then you want to keep the version bounds as tight as possible, ideally completely fixed, so that you have consistency between builds.
+If you are defining dependencies for an executable, then you want to keep the version bounds as tight as possible, ideally completely fixed, so that you have consistency between builds. Completely fixed means your upper bound equals your lower bound - there is exactly one version that is valid.
 
 Where this consistency is most important is when running tests vs building the release version of your executable -> you want to be sure that same dependency versions were used when testing the executable as when it was being built for release, because otherwise you might have untested behaviour become a part of your release. Even if dependency changed only with a "patch" change, e.g. from `1.0.0.0` to `1.0.0.1`, which could happen if your bounds are `>=1.0 && <1.1` and version `1.0.0.1` just got released, it might be that author of that change made a mistake and while fixing one bug introduced a new bug that you are not aware of and that you didn't run through tests.
 
