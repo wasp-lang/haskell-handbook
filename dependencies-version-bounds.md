@@ -181,6 +181,9 @@ Finally, my version bounds are `>=2.16 && <2.18`.
 
 I also ensure my CI workflow runs tests twice -> first with the latest LTS, and then with the nightly resolver.
 
+TODO: Update article so that it says that loose bounds are to be used for libraries you will publish, while fixed should be used for executables you will not publish. If you are publishing an executable, then it is not so easy to decide, it seems there are both camps out there. Npm docs say, regarding package.lock.json: "The official view described in the docs is that option 1 should be used for libraries (presumably in order to reduce the amount of package duplication caused when lots of a package's dependencies all depend on slightly different versions of the same secondary dependency), but that option 2 might be reasonable for executables that are going to be installed globally."
+"The origin of this misuse is NPM documentation. It should instead explain that package-lock.json should only be committed to the source code version control when the project is not a dependency of other projects, i.e. package-lock.json should only by committed to source code version control for top-level projects (programs consumed by the end user, not other programs)."
+
 
 ## Resources
 - https://www.reddit.com/r/haskell/comments/d4o7d6/how_should_you_choose_version_bounds_for_library/
