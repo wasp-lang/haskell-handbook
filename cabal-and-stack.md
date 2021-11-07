@@ -80,3 +80,5 @@ Personally and subjectively, I would put it this way:
 
 ## Resources
 - Comments I got on first version of this article: https://www.reddit.com/r/haskell/comments/qm4xlg/request_for_review_short_article_on_cabal_and/
+- Similar but older article from Kowainik: https://kowainik.github.io/posts/2018-06-21-haskell-build-tools
+- List of advanced cabal tips, first few cover replicating Stack's reproducibility via Cabal with index-state, freeze and similar: https://lukelau.me/haskell/posts/making-the-most-of-cabal/
