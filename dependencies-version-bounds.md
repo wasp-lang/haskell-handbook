@@ -1,4 +1,4 @@
-# Determining dependencies version bounds
+# Determining dependency version bounds
 
 When writing a Haskell project, be it a Stack or Cabal project, you will have a list of dependencies, for which you can specify version bounds (e.g. `filepath: >=1.2 && <1.3` where `filepath` is name of the dependency and `>=1.2 && <1.3` is its version bounds).
 
