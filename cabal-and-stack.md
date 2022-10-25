@@ -73,10 +73,8 @@ Stack does take care of ghc, but you can also handle ghc pretty nicely with `ghc
 
 Stack also helps avoid problems with dependency resolution, but cabal also improved its dependency resolution algorithm lately so it is not that much of an issue any more, and you can still get into trouble with Stack if you need to add package that is not in Stackage.
 
-In practice, both going with `ghcup` + `cabal` or going with `stack` are similarly good options these days.
-Personally and subjectively, I would put it this way:
-- If you want to stick with the officially recommended approach and keep things "standard", first option (cabal) might be the best.
-- On the other hand, if you prefer a bit frendlier experience with more things taken care of out of the box by default (and therefore less space for doing something wrong or overly complicated), second option (stack) might be a better choice.
+In practice, both going with `ghcup` + `cabal` or going with `stack` are good options these days, none of them is wrong.
+If I had to choose one I would recommend `cabal` though, because it is more "standard" and is also better maintained and more developed these days.
 
 ## Resources
 - Comments I got on first version of this article: https://www.reddit.com/r/haskell/comments/qm4xlg/request_for_review_short_article_on_cabal_and/
