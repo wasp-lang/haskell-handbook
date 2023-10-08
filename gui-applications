@@ -1,0 +1,3 @@
+Excellent article about the options for writing GUI (desktop, web) applications with Haskell: http://bradrn.com/posts/hs-gui-libs.html .
+
+Based on the article, for desktop GUI, the "safest" options seem to be `gi-gtk` or `gi-gtk-declarative-app-simple`. Although `monomer` and `dear-imgui` also seem interesting!
