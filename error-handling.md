@@ -3,6 +3,7 @@ The result of this file should be that beginner in Haskell, after reading it, ha
 Also, discuss error vs exception.
 
 Some possibly useful materials:
+- https://wiki.haskell.org/Error_vs._Exception
 - https://www.fpcomplete.com/haskell/tutorial/exceptions/
 - http://blog.ezyang.com/2011/08/8-ways-to-report-errors-in-haskell-revisited/
 - https://www.fpcomplete.com/blog/error-handling-is-hard/
