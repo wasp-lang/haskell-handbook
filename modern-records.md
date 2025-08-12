@@ -13,3 +13,7 @@ Instead, we will focus on a set of language extensions that bring easy-to-unders
 Above is just a short overview of what these do; check each one of them for more details. All four of these extensions interact well together, and normally, you can just set them as default extensions for the whole project.
 
 There is also `OverloadedRecordUpdate` that allows for nested updates like `person { address.streetNum = 42 }`, but it is still experimental and somewhat rough, which is why we are not recommending it by default.
+
+## Resources
+
+Here is video by Well Typed on the topic: https://www.youtube.com/watch?v=9hrDm7xDpig&list=PLD8gywOEY4HaG5VSrKVnHxCptlJv2GAn7 .
