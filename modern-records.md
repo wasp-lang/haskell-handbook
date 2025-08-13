@@ -6,7 +6,7 @@ While the ultimate solution for working with records is probably optics/lenses, 
 
 Instead, we will focus on a set of language extensions that bring easy-to-understand, intuitive quality of life improvements when working with records:
 - `DuplicateRecordFields` -> Allows multiple records in the same module to use the same field names (`data Person = { name :: String }; data Animal = { name :: String }`).
-- `OverloadedRecordDot` -> Allows accessing record field in a similar fashion to other languages: `animal.name` instead of `name animal`.
+- `OverloadedRecordDot` -> Allows accessing record field in a similar fashion to other languages: `animal.name` instead of `name animal`. You can also do `(.name)` to get the selector function.
 - `NoFieldSelectors` -> Functions (selectors) (e.g. `name :: Animal -> String`) are no longer automatically generated for each field in the record, allowing for shorter names and avoiding naming conflicts.
 - `NamedFieldPuns` -> Allows writing `sayHi Animal{name} = "Hi " <> name` instead of `sayHi Animal{name=name} = "Hi " <> name`.
 
