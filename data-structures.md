@@ -42,7 +42,7 @@ Good choice when doing some more serious data processing and need better perform
 
 ## Array and Vector
 
-While data structures like `List` and `Sequence` fit great into Haskell, they don't offer an O(1) random access, and especially not update of an element. If you need max performance for those operations, you will want to use `Vector` or `Array` instead (which don't fit so well into Haskell, so use them only when you really need that performance).
+While data structures like `List` and `Sequence` fit great into Haskell, they don't offer an O(1) random access, and especially not update of an element. If you need max performance for those operations, you will want to use `Vector` or `Array` instead (which don't fit as nicely into Haskell, so you will use them only when really needed).
 
 - [Data.Array](https://hackage.haskell.org/package/array)
 - [Data.Vector (vector)](https://hackage.haskell.org/package/vector)
