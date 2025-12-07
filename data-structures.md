@@ -36,7 +36,7 @@ Similar to list, but with the following differences:
 - finite
 - strict
 - O(1) read/update of both first and last elements (unlike just first in lists)
-- wider variety of efficient operations (logarithmic concatenation, splitting, lookup, ...)
+- some normally slow operations are faster (logarithmic concatenation, splitting, lookup, ...)
 
 Good choice when doing some more serious data processing and need better performance than what a list can offer (for the operations where Sequence is faster), but don't mind the fact it is finite/strict.
 
